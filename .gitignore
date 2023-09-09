@@ -1,0 +1,5 @@
+target/
+.clj-kondo/
+.lsp/
+bb-pastebin.db
+.nrepl-port

@@ -1,0 +1,19 @@
+{:paths ["src"]
+ :deps {honeysql/honeysql {:mvn/version "1.0.444"}}
+ :pods {org.babashka/go-sqlite3 {:version "0.1.0"}}
+ :tasks
+   {init-db
+      {:doc "initialize the database"
+       :requires ([server :as server])
+       :task server/init-db}
+    serve
+      {:doc "start the server"
+       :requires ([server :as server])
+       :task server/serve}}}
+               
+           
+
+
+
+
+
