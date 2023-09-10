@@ -3,9 +3,18 @@ A silly little pastebin clone written in Babashka.
 
 ## Usage
 
-### Dev
-Run `bb init-db` to initialize a database, then run `bb serve`.
+### Requirements
+- Babashka: [Installation](https://github.com/babashka/babashka#installation)
+- Sqlite: [Download](https://www.sqlite.org/download.html)
 
+### Dev
+
+```sh
+bb init-db         # initialize database
+bb serve           # start the server
+bb get ID          # get paste with id of ID
+bb create CONTENT  # paste the specified CONTENT
+```
 ### User
 ```sh
 # creating a paste

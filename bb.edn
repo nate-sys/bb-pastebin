@@ -3,11 +3,23 @@
         org.clojars.askonomm/ruuter {:mvn/version "1.3.2"}}
  :pods {org.babashka/go-sqlite3 {:version "0.1.0"}}
  :tasks
-  {init-db
-   {:doc "initialize the database"
-    :requires ([db :as db])
-    :task db/init-db}
-   serve
-   {:doc "start the server"
-    :requires ([server :as server])
-    :task server/serve}}}
+ {init-db
+  {:doc "initialize the database"
+   :requires ([db :as db])
+   :task db/init-db}
+  serve
+  {:doc "start the server"
+   :requires ([server :as server])
+   :task server/serve}
+  get
+  {:doc "get a paste"
+   :requires ([babashka.http-client :as http]
+              [clojure.pprint :as pp])
+   :task (doseq [arg *command-line-args*]
+           (pp/pprint (http/get (str "http://localhost:8080/" arg))))}
+  create
+  {:doc "create a paste"
+   :requires ([babashka.http-client :as http]
+              [clojure.pprint :as pp])
+   :task (doseq [arg *command-line-args*]
+           (pp/pprint (http/post "http://localhost:8080/" {:body arg})))}}}
