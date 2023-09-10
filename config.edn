@@ -1,0 +1,2 @@
+{:port 8080
+ :db-file "./bb-pastebin.db"}

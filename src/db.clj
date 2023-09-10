@@ -1,10 +1,12 @@
 (ns db
   (:require
+   [clojure.edn :as edn]
    [honeysql.core :as sql]
    [honeysql.helpers :as h]
    [pod.babashka.go-sqlite3 :as sqlite]))
 
-(def ^:private db-file "./bb-pastebin.db")
+(def ^:private db-file
+ (->> "./config.edn" slurp edn/read-string :db-file))
 
 (defn init-db []
   (sqlite/execute!
